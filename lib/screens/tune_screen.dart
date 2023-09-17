@@ -24,10 +24,11 @@ class TunesScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Column(
-        children: [
-          for(int i=0; i<itemsList.length; i++)
-          TunesItem(items: itemsList[i]),
-        ],
+        children:
+          // for(int i=0; i<itemsList.length; i++)
+          // TunesItem(items: itemsList[i]),
+          itemsList.map((e) => TunesItem(items: e)).toList(),
+        
       )
     );
   }
