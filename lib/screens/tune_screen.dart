@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:music_notes_player_app_setup/models/tune_model.dart';
-import 'package:music_notes_player_app_setup/widgets/tune_item.dart';
+import 'package:music_notes_player_app_setup/models/Tune_model.dart';
+import 'package:music_notes_player_app_setup/widgets/tunes_item.dart';
 
-class TuneView extends StatelessWidget {
-  const TuneView({super.key});
-
-  final List<TuneModel> tunes = const [
+class TunesScreen extends StatelessWidget {
+   const TunesScreen({super.key});
+  final List<TuneModel> itemsList = const [
     TuneModel(color: Color(0xffF44336), sound: 'note1.wav'),
     TuneModel(color: Color(0xffF89800), sound: 'note2.wav'),
     TuneModel(color: Color(0xffFEEB3B), sound: 'note3.wav'),
@@ -14,31 +13,22 @@ class TuneView extends StatelessWidget {
     TuneModel(color: Color(0xff2896F3), sound: 'note6.wav'),
     TuneModel(color: Color(0xff9C27B0), sound: 'note7.wav'),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text('Flutter Tune'),
+        centerTitle: true,
         backgroundColor: const Color(0xff253238),
         elevation: 0,
       ),
       body: Column(
-        children: tunes
-            .map(
-              (e) => TuneItem(tune: e),
-            )
-            .toList(),
-      ),
+        children: [
+          for(int i=0; i<itemsList.length; i++)
+          TunesItem(items: itemsList[i]),
+        ],
+      )
     );
   }
-
-  // List<TuneItem> getTuneItems() {
-  //   List<TuneItem> items = [];
-
-  //   for (var color in tuneColors) {
-  //     items.add(TuneItem(color: color));
-  //   }
-  //   return items;
-  // }
 }
